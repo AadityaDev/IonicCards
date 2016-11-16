@@ -14,6 +14,7 @@ import {
     SwingStackComponent,
     SwingCardComponent, SwingModule
 } from 'angular2-swing';
+import { AuthenticateService } from '../providers/authenticate-service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {
     HomePage,
     TabsPage
   ],
-  providers: [],
+  providers: [ AuthenticateService ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule {
 }
