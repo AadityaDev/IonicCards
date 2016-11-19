@@ -13,9 +13,9 @@ import {User} from "../models/User";
 export class AuthenticateService {
 
   data: any;
+  private user:User;
 
   constructor(public http: Http) {
-    console.log('Hello AuthenticateService Provider');
   }
 
   load() {
@@ -37,14 +37,11 @@ export class AuthenticateService {
 
   login(email: string, password: string) {
     if (this.data) {
-      // already loaded data
       return Promise.resolve(this.data);
     }
-    let user:User;
-    user=new User(email,password);
-    console.log(user.toString());
+    this.user=new User(email,password);
     return new Promise(resolve=>{
-      this.http.post('http://staging.myrefers.com/employer/authenticate-employer',user)
+      this.http.post('http://staging.myrefers.com/myrefers-api/authenticate-employer',this.user)
         .map(res=>res.json())
         .subscribe(data=>{
           this.data=data;

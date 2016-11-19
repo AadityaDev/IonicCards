@@ -7,15 +7,14 @@ import {AboutPage} from "../pages/about/about";
 import {ContactPage} from "../pages/contact/contact";
 import {LoginPage} from "../pages/login/login";
 
-
 @Component({
   templateUrl: 'app.html',
 })
 export class MyApp {
 
   @ViewChild('nav') nav: NavController;
-  private rootPage: any;
-  private pages: any[];
+  public rootPage: any;
+  public pages: any[];
 
   constructor(private platform: Platform, private menu: MenuController) {
     this.menu = menu;
@@ -37,7 +36,7 @@ export class MyApp {
     this.menu.close()
     // Using this.nav.setRoot() causes
     // Tabs to not show!
-    this.nav.push(page.component);
+    this.nav.push(page);
   }
 
 }

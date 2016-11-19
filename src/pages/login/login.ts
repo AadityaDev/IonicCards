@@ -1,13 +1,9 @@
 import {Component, ViewChild, Input} from "@angular/core";
 import {NavController} from "ionic-angular";
 import {AuthenticateService} from "../../providers/authenticate-service";
+import {TabsPage} from "../../pages/tabs/tabs";
+// import {SecureStorage} from 'ionic-native';
 
-/*
- Generated class for the Login page.
-
- See http://ionicframework.com/docs/v2/components/#navigation for more info on
- Ionic pages and navigation.
- */
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -15,21 +11,29 @@ import {AuthenticateService} from "../../providers/authenticate-service";
 })
 export class LoginPage {
 
-  // @ViewChild('useremail') useremail: Input;
-  // @ViewChild('password') password: Input;
-
   useremail: string;
   password: string;
 
   constructor(public navCtrl: NavController, public authenticateService: AuthenticateService) {
-    // this.login();
+    this.useremail='kb@myrefers.com';
+    this.password='Myrefers@123';
   }
 
   login() {
       this.authenticateService.login(this.useremail, this.password)
         .then(data=>{
-          console.log("Data: "+data);
-          console.log(this.useremail+" Pass: "+this.password)
+          if(data){
+            if(data.result){
+              //result found
+              console.log(JSON.stringify(data.result));
+              this.navCtrl.setRoot(TabsPage);
+            }else {
+              //error found
+              console.log(JSON.stringify(data.error));
+            }
+          }else{
+            //no data found
+          }
         });
 
   }
