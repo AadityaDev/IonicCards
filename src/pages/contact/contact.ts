@@ -16,11 +16,16 @@ export class ContactPage {
   }
 
   loadCandidates(){
+    // this.jobService.loadActiveJobList()
+    //   .then(data=>{
+    //     this.candidates=data.result;
+    //     console.log(JSON.stringify(this.candidates));
+    //   });
     this.jobService.loadJobApplicants()
       .then(data=>{
-        this.candidates=data.result;
-        console.log(JSON.stringify(this.candidates));
-      });
+            this.candidates=data.result;
+            console.log(JSON.stringify(this.candidates));
+          });
   }
 
 }

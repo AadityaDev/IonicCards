@@ -26,7 +26,8 @@ export class LoginPage {
             if(data.result){
               //result found
               console.log(JSON.stringify(data.result));
-              this.navCtrl.setRoot(TabsPage);
+              this.navCtrl.push(TabsPage);
+
             }else {
               //error found
               console.log(JSON.stringify(data.error));

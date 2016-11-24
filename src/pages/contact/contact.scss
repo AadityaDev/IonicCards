@@ -1,3 +1,25 @@
 page-contact {
 
+  .item-button-right{
+    float: right;
+  }
+
+  .no-padding{
+    padding: 0px;
+    height: 25%;
+  }
+
+  .item-avator-section{
+    background-color: $light_grey;
+    padding:0;
+  }
+
+  .item-relevant-section{
+    background-color: $dark_grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
 }

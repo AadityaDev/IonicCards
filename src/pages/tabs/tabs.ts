@@ -14,6 +14,8 @@ export class TabsPage {
   tab3Root: any = ContactPage;
 
   constructor() {
-
+    this.tab1Root= HomePage;
+    this.tab2Root= AboutPage;
+    this.tab3Root= ContactPage;
   }
 }
