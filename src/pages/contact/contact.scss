@@ -9,6 +9,64 @@ page-contact {
     height: 25%;
   }
 
+  .side-margin{
+    width: 80%;
+    height: auto;;
+    margin: 10%;
+  }
+
+  .screen-background{
+    background-color: $dark_blue;
+  }
+
+  .check-button{
+    background-color: red;
+    z-index: 5;
+    text-align: right;
+    top: 50%;
+    margin-top: 5%;
+    margin-left: 96%;
+    position: absolute;
+    padding: 2%;
+    border: 8px $image_border_shadow solid;
+    border-radius: 50%;
+  }
+
+  .cancel-button{
+    background-color: $image_background;
+    z-index: 5;
+    top: 50%;
+    margin-top: 5%;
+    margin-left: -2%;
+    position: absolute;
+    padding: 2%;
+    border: 8px $image_border_shadow solid;
+    border-radius: 50%;
+  }
+
+  .share-button{
+    background-color: $image_background;
+    z-index: 5;
+    margin-top: 1%;
+    margin-left: 50%;
+    position: absolute;
+    padding: 2%;
+    border: 8px $image_border_shadow solid;
+    border-radius: 50%;
+  }
+
+  .hold-button{
+    background-color: $image_background;
+    z-index: 5;
+    top: 50%;
+    margin-top: 5%;
+    margin-left: -2%;
+    position: absolute;
+    padding: 2%;
+    border: 8px $image_border_shadow solid;
+    border-radius: 50%;
+  }
+
   .item-avator-section{
     background-color: $light_grey;
     padding:0;

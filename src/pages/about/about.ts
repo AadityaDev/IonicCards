@@ -58,6 +58,7 @@ export class AboutPage {
 
     if (x < 0) {
       color = '#FF' + hexCode + hexCode;
+      console.log('x is less than zero');
     } else {
       color = '#' + hexCode + 'FF' + hexCode;
     }
