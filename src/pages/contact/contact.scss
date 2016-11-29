@@ -79,5 +79,20 @@ page-contact {
     justify-content: center;
   }
 
+  #card-stack {
+    width: 80%;
+    height: 100%;
+    background: #047915;
+    border: 10px solid #4cb338;    //px solid #4cb338
+    margin: 10%;  //100px auto 0
+    position: relative;
+  }
 
+  #card-stack ion-card {
+    border-radius: 5px;
+    position: absolute;
+    text-align: center;
+    top: 3%;
+    height: 90%;
+  }
 }

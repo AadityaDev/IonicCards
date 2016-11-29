@@ -29,11 +29,12 @@
     <ion-icon name="logo-twitter"></ion-icon>
   </ion-avatar>
 
-
   <!--card-->
-  <ion-card class="side-margin">
+  <ion-content class="about" padding>
+    <div swing-stack #myswing1 [stackConfig]="stackConfig" (throwoutleft)="voteUp(true)" (throwoutright)="voteUp(false)" id="card-stack">
+    <ion-card #mycards1 swing-card *ngFor="let c of cards">
     <ion-card-header class="no-padding">
-      <ion-grid class="no-padding">
+      <ion-grid class="no-padding" *ngIf="c.picture">
         <ion-row>
           <ion-col width-80>
             <ion-item>
@@ -53,7 +54,7 @@
       </ion-grid>
     </ion-card-header>
 
-    <ion-card-content>
+    <ion-card-content *ngIf="c.picture">
 
       <ion-item>
         <h2>Contact</h2>
@@ -78,6 +79,9 @@
       </ion-item>
     </ion-card-content>
   </ion-card>
+    </div>
+  </ion-content>
+
 </ion-content>
 
 <!--<ion-content class="no-padding">-->
