@@ -1,6 +1,5 @@
-import {Component, QueryList, ViewChildren, ViewChild} from '@angular/core';
-
-import { NavController } from 'ionic-angular';
+import {Component, QueryList, ViewChildren, ViewChild} from "@angular/core";
+import {NavController} from "ionic-angular";
 import {JobService} from "../../providers/job-service";
 import {StackConfig, SwingCardComponent, SwingStackComponent} from "angular2-swing";
 import {Http} from "@angular/http";
@@ -11,7 +10,7 @@ import {Http} from "@angular/http";
 })
 export class ContactPage {
 
-  public candidates:any;
+  public candidates: any;
 
   @ViewChild('myswing1') swingStack: SwingStackComponent;
   @ViewChildren('mycards1') swingCards: QueryList<SwingCardComponent>;
@@ -21,10 +20,10 @@ export class ContactPage {
   recentCard: string = '';
 
 
-  constructor(public navCtrl: NavController,public jobService:JobService,public http:Http) {
+  constructor(public navCtrl: NavController, public jobService: JobService, public http: Http) {
     this.stackConfig = {
       throwOutConfidence: (offset, element) => {
-        return Math.min(Math.abs(offset) / (element.offsetWidth/2), 1);
+        return Math.min(Math.abs(offset) / (element.offsetWidth / 2), 1);
       },
       transform: (element, x, y, r) => {
         this.onItemMove(element, x, y, r);
@@ -33,19 +32,20 @@ export class ContactPage {
         return 800;
       }
     };
+
   }
 
-  loadCandidates(){
+  loadCandidates() {
     // this.jobService.loadActiveJobList()
     //   .then(data=>{
     //     this.candidates=data.result;
     //     console.log(JSON.stringify(this.candidates));
     //   });
     this.jobService.loadJobApplicants()
-      .then(data=>{
-            this.candidates=data.result;
-            console.log(JSON.stringify(this.candidates));
-          });
+      .then(data => {
+        this.candidates = data.result;
+        console.log(JSON.stringify(this.candidates));
+      });
   }
 
   ngAfterViewInit() {
@@ -56,23 +56,20 @@ export class ContactPage {
 
     this.cards = [{email: ''}];
     this.addNewCards(1);
+    this.hideAllButtons();
   }
-
   // Called whenever we drag an element
   onItemMove(element, x, y, r) {
-    var color = '';
-    var abs = Math.abs(x);
-    let min = Math.trunc(Math.min(16*16 - abs, 16*16));
-    let hexCode = this.decimalToHex(min, 2);
-
+    // var color = '';
+    // var abs = Math.abs(x);
+    // let min = Math.trunc(Math.min(16 * 16 - abs, 16 * 16));
     if (x < 0) {
-      color = '#FF' + hexCode + hexCode;
-      console.log('x is less than zero');
+      console.log("Left Clicked");
+      this.showAllButtons();
     } else {
-      color = '#' + hexCode + 'FF' + hexCode;
+      console.log("Right Clicked");
+      this.showAllButtons();
     }
-
-    element.style.background = color;
     element.style['transform'] = `translate3d(0, 0, 0) translate(${x}px, ${y}px) rotate(${r}deg)`;
   }
 
@@ -85,6 +82,7 @@ export class ContactPage {
     } else {
       this.recentCard = 'You disliked: ' + removedCard.email;
     }
+    this.hideAllButtons();
   }
 
 // Add new cards to our array
@@ -98,15 +96,17 @@ export class ContactPage {
       })
   }
 
-// http://stackoverflow.com/questions/57803/how-to-convert-decimal-to-hex-in-javascript
-  decimalToHex(d, padding) {
-    var hex = Number(d).toString(16);
-    padding = typeof (padding) === "undefined" || padding === null ? padding = 2 : padding;
+  hideAllButtons() {
+    document.getElementById("shortlistedButton").style.visibility = 'hidden';
+    document.getElementById("rejectedButton").style.visibility = 'hidden';
+    document.getElementById("shareButton").style.visibility = 'hidden';
+    document.getElementById("onHoldButton").style.visibility = 'hidden';
+  }
 
-    while (hex.length < padding) {
-      hex = "0" + hex;
-    }
-
-    return hex;
+  showAllButtons() {
+    document.getElementById("shortlistedButton").style.visibility = 'visible';
+    document.getElementById("rejectedButton").style.visibility = 'visible';
+    document.getElementById("shareButton").style.visibility = 'visible';
+    document.getElementById("onHoldButton").style.visibility = 'visible';
   }
 }
