@@ -3,41 +3,70 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>DashBoard</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="about" padding>
-  <div swing-stack #myswing1 [stackConfig]="stackConfig" (throwoutleft)="voteUp(true)" (throwoutright)="voteUp(false)" id="card-stack">
-    <ion-card #mycards1 swing-card *ngFor="let c of cards">
-      <ion-item *ngIf="c.picture">
-        <ion-avatar item-left>
-          <img *ngIf="c.picture"[src]="c.picture.medium">
-        </ion-avatar>
-        <h2>{{ c.name.first }} {{ c.name.last}}</h2>
-        <p>{{ c.email }}</p>
-      </ion-item>
+<ion-content class="about">
 
-      <ion-card-content *ngIf="c.location">
-        From: {{ c.location.city }}, {{ c.location.postcode }}<br>
-        Phone: {{ c.phone }}
-      </ion-card-content>
+  <ion-searchbar
+    class="search-bar"
+    [showCancelButton]="true"
+    [animated]="true">
+  </ion-searchbar>
 
-      <ion-row  *ngIf="c.name">
-        <ion-col>
-          <button primary clear small (click)="voteUp(true)">
-            <ion-icon name="thumbs-up"></ion-icon>
-            <div>Yes</div>
-          </button>
-        </ion-col>
-        <ion-col>
-          <button primary clear small (click)="voteUp(false)">
-            <ion-icon name="thumbs-down"></ion-icon>
-            <div>No</div>
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-card>
-  </div>
-  <p style="text-align: center; width: 100%;">{{ recentCard }}</p>
+  <ion-item-group>
+    <ion-item-divider class="list-header">
+      <ion-grid class="list-header">
+        <ion-row>
+          <ion-col width-80>
+            Active Jobs
+            <div style="color: gray">vdvfvdfdfvdfvdf</div>
+          </ion-col>
+          <ion-col width-20>
+            <div class="number-of-jobs">7 jobs</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-item-divider>
+    <ion-item class="no-padding-and-margin">
+      There
+    </ion-item>
+    <ion-item-divider class="list-header">Posted</ion-item-divider>
+    <ion-item-divider class="list-header">Assigned to me</ion-item-divider>
+  </ion-item-group>
+
+  <!--<div swing-stack #myswing1 [stackConfig]="stackConfig" (throwoutleft)="voteUp(true)" (throwoutright)="voteUp(false)" id="card-stack">-->
+  <!--<ion-card #mycards1 swing-card *ngFor="let c of cards">-->
+  <!--<ion-item *ngIf="c.picture">-->
+  <!--<ion-avatar item-left>-->
+  <!--<img *ngIf="c.picture"[src]="c.picture.medium">-->
+  <!--</ion-avatar>-->
+  <!--<h2>{{ c.name.first }} {{ c.name.last}}</h2>-->
+  <!--<p>{{ c.email }}</p>-->
+  <!--</ion-item>-->
+
+  <!--<ion-card-content *ngIf="c.location">-->
+  <!--From: {{ c.location.city }}, {{ c.location.postcode }}<br>-->
+  <!--Phone: {{ c.phone }}-->
+  <!--</ion-card-content>-->
+
+  <!--<ion-row  *ngIf="c.name">-->
+  <!--<ion-col>-->
+  <!--<button primary clear small (click)="voteUp(true)">-->
+  <!--<ion-icon name="thumbs-up"></ion-icon>-->
+  <!--<div>Yes</div>-->
+  <!--</button>-->
+  <!--</ion-col>-->
+  <!--<ion-col>-->
+  <!--<button primary clear small (click)="voteUp(false)">-->
+  <!--<ion-icon name="thumbs-down"></ion-icon>-->
+  <!--<div>No</div>-->
+  <!--</button>-->
+  <!--</ion-col>-->
+  <!--</ion-row>-->
+  <!--</ion-card>-->
+  <!--</div>-->
+  <!--<p style="text-align: center; width: 100%;">{{ recentCard }}</p>-->
 </ion-content>
