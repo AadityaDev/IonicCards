@@ -11,6 +11,8 @@ import {
     SwingStackComponent,
     SwingCardComponent} from 'angular2-swing';
 import {JobService} from "../../providers/job-service";
+import {JobApplicationDetail} from "../../models/JobApplicationDetail";
+import {MyRefersResponse} from "../../models/MyRefersResponse";
 
 @Component({
   selector: 'page-about',
@@ -24,10 +26,8 @@ export class AboutPage {
   @ViewChild(List) activeJobList:List;
 
   headers:Headers;
-  data:any;
-  cards: Array<any>;
-  stackConfig: StackConfig;
-  recentCard: string = '';
+  data:MyRefersResponse;
+  jobApplicationDetails:Array<JobApplicationDetail>;
 
   constructor(public navCtrl: NavController,public http: Http,public jobService:JobService) {
     this.load();
@@ -52,6 +52,8 @@ export class AboutPage {
       .then(data=>{
         this.data=data;
         console.log("Data: "+JSON.stringify(this.data));
+        this.jobApplicationDetails=this.data.result;
+        console.log("JobApplicationDetail: "+JSON.stringify(this.jobApplicationDetails));
       });
   }
 

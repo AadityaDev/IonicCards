@@ -23,30 +23,52 @@
       <ion-list-header class="list-header">
         <ion-row>
           <ion-col width-80>
-            Active Jobs
-            <div style="color: gray">vdvfvdfdfvdfvdf</div>
+            <div class="active-text-style"> Active Jobs</div>
+            <div class="list-item-light-grey-text">Jobs accepting applications</div>
           </ion-col>
           <ion-col width-20>
-            <div class="number-of-jobs">7 jobs</div>
+            <div class="number-of-jobs"> jobs</div>
           </ion-col>
         </ion-row>
       </ion-list-header>
-
       <!--ion active job list item-->
-      <ion-item no-lines class="list-item-bold-text">
-        Active
-        <br>
-        <div class="list-item-grey-text">Job Accepting applications</div>
-        <div icon-right item-right>
-          View
+      <ion-item class="list-item-bold-text" *ngFor="let jobApplicationDetail of jobApplicationDetails">
+        <div style="display: flex">
+          <div style="width: 100%">
+            <div>{{jobApplicationDetail.jobTitle}}</div>
+            <div class="list-item-grey-text" *ngIf="jobApplicationDetail.jobApplicationCount">
+              {{jobApplicationDetail.jobLocation}}
+            </div>
+          </div>
+
+          <div style="display: flex" icon-right class="list-item-light-grey-text">Details
+            <ion-icon name="ios-arrow-dropright"></ion-icon>
+          </div>
         </div>
-        <ion-icon name="ion-android-arrow-dropright"></ion-icon>
-      </ion-item>
 
-      <ion-item detail-push no-lines>
-        Item with Detail Arrow
+        <!--Type of jobs-->
+        <ion-grid class="no-padding">
+          <ion-row>
+            <ion-col width-25>
+              <div class="on-screening">
+                <span class="on-screening-count">{{jobApplicationDetail.jobApplicationCount}}</span>
+                <span class="on-screening-text"> On screening</span>
+              </div>
+            </ion-col>
+            <ion-col width-25>
+              <div class="on-applications">
+                <span class="on-applications-count">{{jobApplicationDetail.jobApplicationCount}}</span>
+                <span class="on-applications-text"> Applicants</span>
+              </div>
+            </ion-col>
+            <ion-col width-50></ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-item>
-
+      <!--footer-->
+      <ion-footer>
+        Show all active jobs
+      </ion-footer>
     </ion-list>
 
     <ion-item-divider class="list-header">
@@ -69,37 +91,5 @@
     <ion-item-divider class="list-header">Posted</ion-item-divider>
     <ion-item-divider class="list-header">Assigned to me</ion-item-divider>
   </ion-item-group>
-
-  <!--<div swing-stack #myswing1 [stackConfig]="stackConfig" (throwoutleft)="voteUp(true)" (throwoutright)="voteUp(false)" id="card-stack">-->
-  <!--<ion-card #mycards1 swing-card *ngFor="let c of cards">-->
-  <!--<ion-item *ngIf="c.picture">-->
-  <!--<ion-avatar item-left>-->
-  <!--<img *ngIf="c.picture"[src]="c.picture.medium">-->
-  <!--</ion-avatar>-->
-  <!--<h2>{{ c.name.first }} {{ c.name.last}}</h2>-->
-  <!--<p>{{ c.email }}</p>-->
-  <!--</ion-item>-->
-
-  <!--<ion-card-content *ngIf="c.location">-->
-  <!--From: {{ c.location.city }}, {{ c.location.postcode }}<br>-->
-  <!--Phone: {{ c.phone }}-->
-  <!--</ion-card-content>-->
-
-  <!--<ion-row  *ngIf="c.name">-->
-  <!--<ion-col>-->
-  <!--<button primary clear small (click)="voteUp(true)">-->
-  <!--<ion-icon name="thumbs-up"></ion-icon>-->
-  <!--<div>Yes</div>-->
-  <!--</button>-->
-  <!--</ion-col>-->
-  <!--<ion-col>-->
-  <!--<button primary clear small (click)="voteUp(false)">-->
-  <!--<ion-icon name="thumbs-down"></ion-icon>-->
-  <!--<div>No</div>-->
-  <!--</button>-->
-  <!--</ion-col>-->
-  <!--</ion-row>-->
-  <!--</ion-card>-->
-  <!--</div>-->
-  <!--<p style="text-align: center; width: 100%;">{{ recentCard }}</p>-->
+  
 </ion-content>
