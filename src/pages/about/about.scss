@@ -10,6 +10,13 @@ page-about {
     font-weight: bold;
   }
 
+  .list a.item-borderless{
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+  }
+
   .no-padding-and-margin{
     padding: 0%;
     margin: 0%;
@@ -22,6 +29,15 @@ page-about {
   .number-of-jobs{
     line-height: 3;
     float: right;
+  }
+
+  .list-item-bold-text{
+    font-weight: bold;
+    color: $text-color;
+  }
+
+  .list-item-grey-text{
+    color: #A9A9A9;
   }
 
 }

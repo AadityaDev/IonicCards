@@ -27,7 +27,6 @@ export class LoginPage {
               //result found
               console.log(JSON.stringify(data.result));
               this.navCtrl.push(TabsPage);
-
             }else {
               //error found
               console.log(JSON.stringify(data.error));
