@@ -46,6 +46,7 @@ page-about {
   .list-item-light-grey-text {
     color: $grey_light_text;
     top: 0;
+    display: flex;
   }
 
   .active-text-style{

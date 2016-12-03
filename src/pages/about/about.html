@@ -32,7 +32,7 @@
         </ion-row>
       </ion-list-header>
       <!--ion active job list item-->
-      <ion-item class="list-item-bold-text" *ngFor="let jobApplicationDetail of jobApplicationDetails">
+      <ion-item class="list-item-bold-text" *ngFor="let jobApplicationDetail of jobApplicationDetailsPre">
         <div style="display: flex">
           <div style="width: 100%">
             <div>{{jobApplicationDetail.jobTitle}}</div>
@@ -41,7 +41,7 @@
             </div>
           </div>
 
-          <div style="display: flex" icon-right class="list-item-light-grey-text">Details
+          <div icon-right class="list-item-light-grey-text">Details
             <ion-icon name="ios-arrow-dropright"></ion-icon>
           </div>
         </div>
@@ -65,31 +65,44 @@
           </ion-row>
         </ion-grid>
       </ion-item>
-      <!--footer-->
-      <ion-footer>
-        Show all active jobs
-      </ion-footer>
+
+      <ion-item-divider class="list-header" (click)="showAllActiveJobList()">
+        <ion-grid>
+          <ion-row>
+            <ion-col width-90>
+              {{showActiveText}}
+            </ion-col>
+            <!--<ion-col width-90 *ngIf="jobApplicationDetailsPre.length>=2">-->
+              <!--Show less jobs-->
+            <!--</ion-col>-->
+            <ion-col width-10>
+              <ion-icon name="ios-arrow-dropright"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item-divider>
+
     </ion-list>
 
-    <ion-item-divider class="list-header">
-      <ion-grid class="list-header">
-        <ion-row>
-          <ion-col width-80>
-            Active Jobs
-            <div style="color: gray">vdvfvdfdfvdfvdf</div>
-          </ion-col>
-          <ion-col width-20>
-            <div class="number-of-jobs">7 jobs</div>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+    <!--<ion-item-divider class="list-header">-->
+      <!--<ion-grid class="list-header">-->
+        <!--<ion-row>-->
+          <!--<ion-col width-80>-->
+            <!--Active Jobs-->
+            <!--<div style="color: gray">vdvfvdfdfvdfvdf</div>-->
+          <!--</ion-col>-->
+          <!--<ion-col width-20>-->
+            <!--<div class="number-of-jobs">7 jobs</div>-->
+          <!--</ion-col>-->
+        <!--</ion-row>-->
+      <!--</ion-grid>-->
 
-    </ion-item-divider>
-    <ion-item class="no-padding-and-margin">
-      There
-    </ion-item>
-    <ion-item-divider class="list-header">Posted</ion-item-divider>
-    <ion-item-divider class="list-header">Assigned to me</ion-item-divider>
+    <!--</ion-item-divider>-->
+    <!--<ion-item class="no-padding-and-margin">-->
+      <!--There-->
+    <!--</ion-item>-->
+    <!--<ion-item-divider class="list-header">Posted</ion-item-divider>-->
+    <!--<ion-item-divider class="list-header">Assigned to me</ion-item-divider>-->
   </ion-item-group>
-  
+
 </ion-content>
