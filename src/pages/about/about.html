@@ -23,8 +23,8 @@
       <ion-list-header class="list-header">
         <ion-row>
           <ion-col width-80>
-            <div class="active-text-style"> Active Jobs</div>
-            <div class="list-item-light-grey-text">Jobs accepting applications</div>
+            <div class="header-title-text"> Active Jobs</div>
+            <div class="subtitle-light-grey-text">Jobs accepting applications</div>
           </ion-col>
           <ion-col width-20>
             <div class="number-of-jobs"> jobs</div>
@@ -41,27 +41,25 @@
             </div>
           </div>
 
-          <div icon-right class="list-item-light-grey-text">Details
+          <div icon-right class="subtitle-light-grey-text">Details
             <ion-icon name="ios-arrow-dropright"></ion-icon>
           </div>
         </div>
-
         <!--Type of jobs-->
         <ion-grid class="no-padding">
           <ion-row>
-            <ion-col width-25>
+            <ion-col width-50>
               <div class="on-screening">
                 <span class="on-screening-count">{{jobApplicationDetail.jobApplicationCount}}</span>
                 <span class="on-screening-text"> On screening</span>
               </div>
             </ion-col>
-            <ion-col width-25>
+            <ion-col width-50>
               <div class="on-applications">
                 <span class="on-applications-count">{{jobApplicationDetail.jobApplicationCount}}</span>
                 <span class="on-applications-text"> Applicants</span>
               </div>
             </ion-col>
-            <ion-col width-50></ion-col>
           </ion-row>
         </ion-grid>
       </ion-item>
@@ -72,37 +70,137 @@
             <ion-col width-90>
               {{showActiveText}}
             </ion-col>
-            <!--<ion-col width-90 *ngIf="jobApplicationDetailsPre.length>=2">-->
-              <!--Show less jobs-->
-            <!--</ion-col>-->
             <ion-col width-10>
               <ion-icon name="ios-arrow-dropright"></ion-icon>
             </ion-col>
           </ion-row>
         </ion-grid>
       </ion-item-divider>
-
     </ion-list>
 
-    <!--<ion-item-divider class="list-header">-->
-      <!--<ion-grid class="list-header">-->
-        <!--<ion-row>-->
-          <!--<ion-col width-80>-->
-            <!--Active Jobs-->
-            <!--<div style="color: gray">vdvfvdfdfvdfvdf</div>-->
-          <!--</ion-col>-->
-          <!--<ion-col width-20>-->
-            <!--<div class="number-of-jobs">7 jobs</div>-->
-          <!--</ion-col>-->
-        <!--</ion-row>-->
-      <!--</ion-grid>-->
+    <!--Assigned to me-->
+    <ion-list class="list-header">
+      <!--Assigned job list header-->
+      <ion-list-header class="list-header">
+        <ion-row>
+          <ion-col width-80>
+            <div class="header-title-text"> Assigned to me</div>
+            <div class="subtitle-light-grey-text">Jobs visible to you only</div>
+          </ion-col>
+          <ion-col width-20>
+            <div class="number-of-jobs"> jobs</div>
+          </ion-col>
+        </ion-row>
+      </ion-list-header>
+      <!--ion active job list item-->
+      <ion-item class="list-item-bold-text" *ngFor="let jobApplicationDetail of jobApplicationDetailsAssignedPre">
+        <div style="display: flex">
+          <div style="width: 100%">
+            <div>{{jobApplicationDetail.jobTitle}}</div>
+            <div class="list-item-grey-text" *ngIf="jobApplicationDetail.jobApplicationCount">
+              {{jobApplicationDetail.jobLocation}}
+            </div>
+          </div>
 
-    <!--</ion-item-divider>-->
-    <!--<ion-item class="no-padding-and-margin">-->
-      <!--There-->
-    <!--</ion-item>-->
-    <!--<ion-item-divider class="list-header">Posted</ion-item-divider>-->
-    <!--<ion-item-divider class="list-header">Assigned to me</ion-item-divider>-->
+          <div icon-right class="subtitle-light-grey-text">Details
+            <ion-icon name="ios-arrow-dropright"></ion-icon>
+          </div>
+        </div>
+        <!--Type of jobs-->
+        <ion-grid class="no-padding">
+          <ion-row>
+            <ion-col width-50>
+              <div class="on-screening">
+                <span class="on-screening-count">{{jobApplicationDetail.jobApplicationCount}}</span>
+                <span class="on-screening-text"> On screening</span>
+              </div>
+            </ion-col>
+            <ion-col width-50>
+              <div class="on-applications">
+                <span class="on-applications-count">{{jobApplicationDetail.jobApplicationCount}}</span>
+                <span class="on-applications-text"> Applicants</span>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+      <ion-item-divider class="list-header" (click)="showAllAssignedJobList()">
+        <ion-grid>
+          <ion-row>
+            <ion-col width-90>
+              {{showAssignedText}}
+            </ion-col>
+            <ion-col width-10>
+              <ion-icon name="ios-arrow-dropright"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item-divider>
+    </ion-list>
+
+    <!--Posted-->
+    <ion-list class="list-header">
+      <!--Posted job list header-->
+      <ion-list-header class="list-header">
+        <ion-row>
+          <ion-col width-80>
+            <div class="header-title-text">Posted</div>
+            <div class="subtitle-light-grey-text">Jobs posted by you</div>
+          </ion-col>
+          <ion-col width-20>
+            <div class="number-of-jobs">jobs</div>
+          </ion-col>
+        </ion-row>
+      </ion-list-header>
+      <!--ion active job list item-->
+      <ion-item class="list-item-bold-text" *ngFor="let jobApplicationDetail of jobApplicationDetailsPostedPre">
+        <div style="display: flex">
+          <div style="width: 100%">
+            <div>{{jobApplicationDetail.jobTitle}}</div>
+            <div class="list-item-grey-text" *ngIf="jobApplicationDetail.jobApplicationCount">
+              {{jobApplicationDetail.jobLocation}}
+            </div>
+          </div>
+
+          <div icon-right class="subtitle-light-grey-text">Details
+            <ion-icon name="ios-arrow-dropright"></ion-icon>
+          </div>
+        </div>
+        <!--Type of jobs-->
+        <ion-grid class="no-padding">
+          <ion-row>
+            <ion-col width-50>
+              <div class="on-screening">
+                <span class="on-screening-count">{{jobApplicationDetail.jobApplicationCount}}</span>
+                <span class="on-screening-text"> On screening</span>
+              </div>
+            </ion-col>
+            <ion-col width-50>
+              <div class="on-applications">
+                <span class="on-applications-count">{{jobApplicationDetail.jobApplicationCount}}</span>
+                <span class="on-applications-text"> Applicants</span>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+      <ion-item-divider class="list-header" (click)="showAllPostedJobList()">
+        <ion-grid>
+          <ion-row>
+            <ion-col width-90>
+              {{showPostedText}}
+            </ion-col>
+            <ion-col width-10>
+              <ion-icon name="ios-arrow-dropright"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item-divider>
+    </ion-list>
+
+
   </ion-item-group>
 
 </ion-content>
